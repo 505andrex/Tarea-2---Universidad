@@ -1,6 +1,7 @@
-public class Laptop extends DispositivoElectronico{
+package com.tiendadeservicioselectronicos;
 
-    //ATRIBUTOS
+public class Laptop {
+        //ATRIBUTOS
     private int memoriaRAM;
     private boolean  esTactil;
 
@@ -32,7 +33,6 @@ public class Laptop extends DispositivoElectronico{
     public void ejecutarPrograma(String nombreApp) {
         System.out.println("Ejecutando " + nombreApp + " en la laptop " + getModelo() + ".");
     }
-
     @Override
     public void mostrarDatos(){
         System.out.println("\n[ Laptop Creada ]");

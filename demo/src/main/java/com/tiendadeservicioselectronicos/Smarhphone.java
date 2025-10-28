@@ -1,4 +1,6 @@
-public class Smartphone extends DispositivoElectronico{
+package com.tiendadeservicioselectronicos;
+
+public class Smarhphone {
     //ATRIBUTOS 
     private String sistemaOperativo;
     private int numCamaras;

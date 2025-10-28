@@ -1,8 +1,10 @@
+package com.tiendadeservicioselectronicos;
+
 public abstract class DispositivoElectronico {
-    //ATRIBUTOS PRIVADOS
+        //ATRIBUTOS PRIVADOS
     private String marca;
     private String modelo;
-    private double precio;
+    private static double precio=0;
     private int anioFabricacion;
 
     //CONSTRUCTOR
@@ -21,7 +23,7 @@ public abstract class DispositivoElectronico {
     public void setMarca(String marca) {
         this.marca = marca;
     }
-
+    
     public String getModelo() {
         return modelo;
     }
