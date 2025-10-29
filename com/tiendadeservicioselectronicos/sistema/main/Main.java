@@ -1,14 +1,11 @@
-/**
- * 505andrex/tarea-2---universidad/Tarea-2---Universidad-c3e9ec4db0b5d444804ea0461e4556badc1a2fda/com/tiendadeservicioselectronicos/sistema/main/Main.java
- */
 package com.tiendadeservicioselectronicos.sistema.main;
 
 import java.util.ArrayList;
-import java.util.InputMismatchException; // Importado para Fase 2
+import java.util.InputMismatchException; 
 import java.util.Scanner;
 
-import com.tiendadeservicioselectronicos.sistema.excepciones.ValidacionException; // Importado para Fase 2
-import com.tiendadeservicioselectronicos.sistema.modelo.DispositivoElectronico;
+import com.tiendadeservicioselectronicos.sistema.excepciones.ValidacionException; 
+import com.tiendadeservicioselectronicos.sistema.modelo.ElectronicDevice;
 import com.tiendadeservicioselectronicos.sistema.modelo.Laptop;
 import com.tiendadeservicioselectronicos.sistema.modelo.Smartphone;
 
@@ -27,20 +24,20 @@ public class Main {
         System.out.println("Bienvenido al Sistema de Inventario v2.0");
 
         Scanner scanner = new Scanner(System.in);
-        ArrayList<DispositivoElectronico> misDispositivos = new ArrayList<>();
+        ArrayList<ElectronicDevice> myDevices = new ArrayList<>();
 
         // Usamos un bloque try-finally para asegurar que el scanner se cierre
         // incluso si ocurre un error inesperado no capturado.
         try {
-            // --- Registro de Smartphone con Manejo de Excepciones (Fase 2) ---
-            Smartphone miTelefono = new Smartphone("", "", 0, 0, "", 0);
+            // --- Registro de Smartphone con Manejo de Excepciones---
+            Smartphone myPhone = new Smartphone("", "", 0, 0, "", 0);
             System.out.println("\n--- Ingrese los datos del Smartphone ---");
 
             // Bucle para MARCA (catch IllegalArgumentException)
             while (true) {
                 try {
                     System.out.print("Marca: ");
-                    miTelefono.setMarca(scanner.nextLine());
+                    myPhone.setBrand(scanner.nextLine());
                     break; // Dato válido, salimos del bucle
                 } catch (IllegalArgumentException e) {
                     System.out.println("Error: " + e.getMessage() + " Intente de nuevo.");
@@ -51,7 +48,7 @@ public class Main {
             while (true) {
                 try {
                     System.out.print("Modelo: ");
-                    miTelefono.setModelo(scanner.nextLine());
+                    myPhone.setModel(scanner.nextLine());
                     break; 
                 } catch (IllegalArgumentException e) {
                     System.out.println("Error: " + e.getMessage() + " Intente de nuevo.");
@@ -62,10 +59,10 @@ public class Main {
             while (true) {
                 try {
                     System.out.print("Precio: ");
-                    miTelefono.setPrecio(scanner.nextDouble());
+                    myPhone.setPrice(scanner.nextDouble());
                     break; 
                 } catch (ValidacionException e) {
-                    System.out.println("Error de validación: " + e.getMessage() + " Intente de nuevo.");
+                    System.out.println("Error de validacion: " + e.getMessage() + " Intente de nuevo.");
                 } catch (InputMismatchException e) {
                     System.out.println("Error de formato: Debe ingresar un número (ej. 199.99).");
                     scanner.nextLine(); // Limpiar el buffer del scanner
@@ -76,7 +73,7 @@ public class Main {
             while (true) {
                 try {
                     System.out.print("Año de Fabricación: ");
-                    miTelefono.setAnioFabricacion(scanner.nextInt());
+                    myPhone.setManuFactureYear(scanner.nextInt());
                     scanner.nextLine(); // Limpiar el buffer (consume el \n)
                     break; 
                 } catch (ValidacionException e) {
@@ -91,7 +88,7 @@ public class Main {
             while (true) {
                 try {
                     System.out.print("Sistema Operativo (ej. Android, iOS): ");
-                    miTelefono.setSistemaOperativo(scanner.nextLine());
+                    myPhone.setOperatingSystem(scanner.nextLine());
                     break; 
                 } catch (IllegalArgumentException e) {
                     System.out.println("Error: " + e.getMessage() + " Intente de nuevo.");
@@ -101,8 +98,8 @@ public class Main {
             // Bucle para NÚMERO DE CÁMARAS (catch ValidacionException | InputMismatchException)
             while (true) {
                 try {
-                    System.out.print("Número de Cámaras: ");
-                    miTelefono.setNumCamaras(scanner.nextInt());
+                    System.out.print("Numero de Camaras: ");
+                    myPhone.setCameraCount(scanner.nextInt());
                     scanner.nextLine(); // Limpiar el buffer
                     break; 
                 } catch (ValidacionException e) {
@@ -113,19 +110,19 @@ public class Main {
                 }
             }
 
-            misDispositivos.add(miTelefono);
-            System.out.println("¡Smartphone registrado con éxito!");
+            myDevices.add(myPhone);
+            System.out.println("¡Smartphone registrado con exito!");
 
             // --- Registro de Laptop con Manejo de Excepciones ---
             System.out.println("--------------------------------------------------");
             System.out.println("\n--- Ingrese los datos de la Laptop ---");
-            Laptop miLaptop = new Laptop("", "", 0, 0, 0, false);
+            Laptop myLaptop = new Laptop("", "", 0, 0, 0, false);
             
             // Bucle para MARCA
             while (true) {
                 try {
                     System.out.print("Marca: ");
-                    miLaptop.setMarca(scanner.nextLine());
+                    myLaptop.setBrand(scanner.nextLine());
                     break; 
                 } catch (IllegalArgumentException e) {
                     System.out.println("Error: " + e.getMessage() + " Intente de nuevo.");
@@ -136,7 +133,7 @@ public class Main {
             while (true) {
                 try {
                     System.out.print("Modelo: ");
-                    miLaptop.setModelo(scanner.nextLine());
+                    myLaptop.setModel(scanner.nextLine());
                     break; 
                 } catch (IllegalArgumentException e) {
                     System.out.println("Error: " + e.getMessage() + " Intente de nuevo.");
@@ -147,12 +144,12 @@ public class Main {
             while (true) {
                 try {
                     System.out.print("Precio: ");
-                    miLaptop.setPrecio(scanner.nextDouble());
+                    myLaptop.setPrice(scanner.nextDouble());
                     break; 
                 } catch (ValidacionException e) {
-                    System.out.println("Error de validación: " + e.getMessage() + " Intente de nuevo.");
+                    System.out.println("Error de validacion: " + e.getMessage() + " Intente de nuevo.");
                 } catch (InputMismatchException e) {
-                    System.out.println("Error de formato: Debe ingresar un número (ej. 799.99).");
+                    System.out.println("Error de formato: Debe ingresar un numero (ej. 799.99).");
                     scanner.nextLine(); 
                 }
             }
@@ -160,13 +157,13 @@ public class Main {
             // Bucle para AÑO
             while (true) {
                 try {
-                    System.out.print("Año de Fabricación: ");
-                    miLaptop.setAnioFabricacion(scanner.nextInt());
+                    System.out.print("Anio de Fabricacion: ");
+                    myLaptop.setManuFactureYear(scanner.nextInt());
                     break; 
                 } catch (ValidacionException e) {
-                    System.out.println("Error de validación: " + e.getMessage() + " Intente de nuevo.");
+                    System.out.println("Error de validacion: " + e.getMessage() + " Intente de nuevo.");
                 } catch (InputMismatchException e) {
-                    System.out.println("Error de formato: Debe ingresar un número entero (ej. 2022).");
+                    System.out.println("Error de formato: Debe ingresar un numero entero (ej. 2022).");
                     scanner.nextLine(); 
                 }
             }
@@ -175,10 +172,10 @@ public class Main {
             while (true) {
                 try {
                     System.out.print("Memoria RAM (en GB): ");
-                    miLaptop.setMemoriaRAM(scanner.nextInt());
+                    myLaptop.setRamMemory(scanner.nextInt());
                     break; 
                 } catch (ValidacionException e) {
-                    System.out.println("Error de validación: " + e.getMessage() + " Intente de nuevo.");
+                    System.out.println("Error de validacion: " + e.getMessage() + " Intente de nuevo.");
                 } catch (InputMismatchException e) {
                     System.out.println("Error de formato: Debe ingresar un número entero (ej. 16).");
                     scanner.nextLine(); 
@@ -189,7 +186,7 @@ public class Main {
             while (true) {
                 try {
                     System.out.print("¿Es Táctil? (true/false): ");
-                    miLaptop.setEsTactil(scanner.nextBoolean());
+                    myLaptop.setisTouchscreen(scanner.nextBoolean());
                     scanner.nextLine(); // Limpiar el buffer
                     break; 
                 } catch (InputMismatchException e) {
@@ -198,25 +195,25 @@ public class Main {
                 }
             }
             
-            misDispositivos.add(miLaptop);
-            System.out.println("¡Laptop registrada con éxito!");
+            myDevices.add(myLaptop);
+            System.out.println("¡Laptop registrada con exito!");
 
 
             // --- Mostrar Dispositivos Registrados ---
             System.out.println("--------------------------------------------------");
             System.out.println("\n--- Dispositivos Registrados ---");
-            for (DispositivoElectronico m : misDispositivos) {
-                m.mostrarDatos();
+            for (ElectronicDevice m : myDevices) {
+                m.displayInfo();
                 System.out.println("--------------------------------------------------");
             }
 
             // --- Mostrar Conteo Estático ---
             System.out.println("\nTotal de dispositivos creados en esta sesión: " + 
-            DispositivoElectronico.getContadorDispositivos());
+            ElectronicDevice.getDeviceCounter());
 
         } catch (Exception e) {
             // Captura genérica para cualquier error fatal imprevisto.
-            System.out.println("Ha ocurrido un error inesperado y el programa se cerrará.");
+            System.out.println("Ha ocurrido un error inesperado y el programa se cerrara.");
             e.printStackTrace();
         } finally {
 

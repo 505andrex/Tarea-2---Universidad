@@ -10,7 +10,7 @@ public class ValidacionException extends Exception {
      *
      * @param mensaje El mensaje que describe el error de validación.
      */
-    public ValidacionException(String mensaje) {
-        super(mensaje);
+    public ValidacionException(String message) {
+        super(message);
     }
 }
